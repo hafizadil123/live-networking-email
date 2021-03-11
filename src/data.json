@@ -1,0 +1,40 @@
+[
+        {
+          id: "1",
+          component: "Live Retail Club1",
+          Stores:"[
+              {Art1},
+              {Art2},
+              {Art3},
+              {Art4}
+              ]"
+        },
+        {
+            id: "2",
+            component: "Live Retail Club2",
+            Stores:"[
+                {Art1},
+                {Art2},
+                {Art3},
+                {Art4}]"
+          },
+          {
+            id: "3",
+            component: "Live Retail Club3",
+            Stores:"[
+                {Art1},
+                {Art2},
+                {Art3},
+                {Art4}]"
+          }, 
+          {
+            id: "4",
+            component: "Live Retail Club4",
+            Stores:"[
+                {Art1},
+                {Art2},
+                {Art3},
+                {Art4}]"
+          }
+    
+ ];
