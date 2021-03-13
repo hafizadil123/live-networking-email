@@ -26,7 +26,6 @@ function Store(){
     <div className="input-group rounded">
   <input type="search" className="form-control rounded" placeholder={`${placeholderObj.name} - Filter Category..`} aria-label="Search"  value={searchText} aria-describedby="search-addon" onChange={e => search(e.target.value)}/>
 </div>
-
   </div>
   <div className="store" style={{marginTop: '8%'}}>
     <h5>2- Select Store Type:</h5>
