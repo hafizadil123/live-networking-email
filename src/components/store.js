@@ -28,7 +28,7 @@ function Store(){
 </div>
 
   </div>
-  <div className="store">
+  <div className="store" style={{marginTop: '8%'}}>
     <h5>2- Select Store Type:</h5>
   </div>
   <div className="store-box mx-auto">
