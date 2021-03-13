@@ -85,7 +85,16 @@ border: 2px solid rgb(141, 137, 137);
 
 
 }
-
+.serachCat {
+  position: relative !important;
+  width: 392px !important;
+  left: 2% !important;
+}
+.serachCatR {
+  position: relative !important;
+  width: 392px !important;
+  left: 22% !important;
+}
 .store-box a{
   color: #fff;
   text-decoration:none ;

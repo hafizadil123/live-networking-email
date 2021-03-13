@@ -124,15 +124,15 @@ function Register(){
 
 return(
   
-<div className="container" style={{marginTop: '16px'}}>     
+<div className="container mb-5 pb-5 border bg-secondary" style={{marginTop: '40px'}}>     
   <form onSubmit={handleSubmit(onSubmitt)}>
     <div className="row">
-    <div className="form-group col-md-6">
+    <div className="form-group col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
     <label htmlFor="fullName">Full Name</label>
     <input type="text" name="fullName" className="form-control" id="fullName"  placeholder="Enter Full Name" ref={register} />
    <div style={{color:'red'}}> {errors && errors.fullName && "* Name is required"}</div>
   </div>
-  <div className="form-group col-md-6">
+  <div className="form-group col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
     <label htmlFor="email">Email address</label>
     <input type="email" name="email" className="form-control" id="eamil" aria-describedby="emailHelp" placeholder="Enter email" ref={register} />
    <div style={{color:'red'}}> {errors && errors.email && "* Enter valid email "}</div>
@@ -142,20 +142,20 @@ return(
   </div>
  
  <div className="row">
- <div className="form-group col-md-6">
+ <div className="form-group col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
     <label htmlFor="password">Password</label>
     <input type="password" name="password" className="form-control" id="password" placeholder="Password" ref={register}/>
    <div style={{color:'red'}}> {errors && errors.password && "* Password is required"}</div>
 
   </div>
-  <div className="form-group col-md-6">
+  <div className="form-group col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
     <label htmlFor="city">Enter City Name</label>
     <input type="text" name="city" className="form-control" id="city" placeholder="Enter City" ref={register}/>
    <div style={{color:'red'}}> {errors && errors.city && "* City is required"}</div>
   </div> 
  </div>
  <div className="row">
-  <div class="form-group col-md-6">
+  <div class="form-group col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
     <label for="clubName">Select Club</label>
     <select class="form-control" id="clubName" name="clubName" ref={register}>
       <option></option>
@@ -163,7 +163,7 @@ return(
     </select>
     <div style={{color:'red'}}> {errors && errors.clubName && "* Club is required field"}</div>
   </div>
-  <div class="form-group col-md-6">
+  <div class="form-group col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
     <label for="clubName">Select Role</label>
     <select class="form-control" id="clubName" name="role" ref={register} >
       <option ></option>
@@ -173,20 +173,21 @@ return(
   </div>
  </div>
   <div className="row">
-  <div className="form-group col-md-6">
+  <div className="form-group col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
     <label htmlFor="occupation">Enter Your Occupation</label>
     <input type="text" name="occupation" className="form-control" id="occupation" placeholder="Enter Occupation" ref={register}/>
    <div style={{color:'red'}}> {errors && errors.occupation && "* Occupation is required"}</div>
 
   </div>
-  <div className="form-group col-md-6">
+  <div className="form-group col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
     <label htmlFor="city">Enter Your University</label>
     <input type="university" name="university" className="form-control" id="university" placeholder="Enter University Name" ref={register}/>
    <div style={{color:'red'}}> {errors && errors.university && "* University is required"}</div>
 
   </div>
   </div>
-  <div className="form-group">
+  <div className="row">
+  <div className="form-group col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
   <CountryDropdown
     value={country}
     classes="country"
@@ -194,28 +195,31 @@ return(
      />
    
   </div>
+  </div>
   <div className="row">
-<div className="col-md-6">
-<GoogleLogin
+<div className="form-group col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+<GoogleLogin buttonStyle={{padding:"7px"}}
     clientId="160899161619-0srut8hvug4b3v773plc25g46tbeompp.apps.googleusercontent.com"
-    buttonText="Singup with Google"
+    textButton="Singup with Google"
     onSuccess={responseGoogle}
     onFailure={responseGoogle}
     cookiePolicy={'single_host_origin'}
-    classes="custom-style"
+    className="bg-danger text-white font-weight-bold"
   />,
 
 </div>
-<div className="col-md-6">
-<FacebookLogin
+<div className="form-group col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+<FacebookLogin buttonStyle={{padding:"7px"}}
     appId="274436150476312"
     fields="name,email,picture"
     onClick={() => {}}
-    textButton="Signup Facebook"
-    callback={responseFacebook} />,
+    textButton="Signup With Facebook"
+    callback={responseFacebook} 
+    icon="fa-facebook" />,
+      
   </div>
   </div>
-  
+  <div className="row mb-5">
   <div className="center">
     {formData ? <StripeCheckout
         stripeKey="pk_test_Lp6L3Vsfdml5cUGlmP5yzysT"
@@ -227,7 +231,7 @@ return(
       />: <button type="submit" className="btn btn-primary">
       Register
   </button>}
-  
+  </div>
   
   </div>
 </form>

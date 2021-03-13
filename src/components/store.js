@@ -12,8 +12,12 @@ function Store(){
   const placeholderObj = clubNames.filter(el => el.value === clubKey)[0];
   const search = (value) => {
     setSearchText(value);
-    const updatedCat = categories && categories.length > 0 && categories.filter(el => [el.name.toLowerCase()].includes(value)) 
+    const updatedCat = categories && categories.length > 0 && categories.filter(el => el.name.toLowerCase().indexOf(value)!== -1) 
     setCategories(updatedCat);
+    if(!value) {
+      setCategories(getObj.categories)
+    } 
+   
   }
     return(
       <div className="container" style={{marginTop: '5%'}}>

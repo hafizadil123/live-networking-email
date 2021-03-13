@@ -1,15 +1,19 @@
 import React, {useState, useEffect} from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import axios from 'axios';
-import {ClubCategories } from '../constant';
+import {ClubCategories, clubNames } from '../constant';
 
 
 function Role(){
   const [userData, setUserDate] = useState('');
+  const [searchCretorText, setSearchText] = useState('');
+  const [searchOwnerText, setStoreOwnerText] = useState('');
+  const [creators, setCreator] = useState([]);
+  const [storeOwnerUsers, setStoreOwnerUser] = useState([]);
   let location = useLocation();
   const clubKey = location.search.split('&')[0].split('=')[1] || 'live_retail_club';
   const categoryName = location.search.split('&')[1].split('=')[1];
-  console.log('dd', categoryName)
+  const placeholderObj = clubNames.filter(el => el.value === clubKey)[0];
   const obj = ClubCategories[clubKey];
   const q1 = ClubCategories[clubKey].heading_one.value;
   const q2 = ClubCategories[clubKey].heading_two.value;
@@ -18,17 +22,51 @@ function Role(){
 
       if(res){
         setUserDate(res.data);
+        setCreator(res.data.creators);
+        setStoreOwnerUser(res.data.storeOwnerUser)
       }
       console.log('daa', res.data)
     })
-  }, [])
+  }, []);
+  const searchCretor = (value) => {
+    setSearchText(value);
+    const updatedCat = creators && creators.length > 0 && creators.filter(el => el.fullName.toLowerCase().indexOf(value)!== -1) 
+    setCreator(updatedCat);
+    if(!value) {
+      setCreator(userData.creators)
+    } 
+   
+  }
+  const searchOwner = (value) => {
+    setStoreOwnerText(value);
+    const updatedCat = storeOwnerUsers && storeOwnerUsers.length > 0 && storeOwnerUsers.filter(el => el.fullName.toLowerCase().indexOf(value)!== -1) 
+    setStoreOwnerUser(updatedCat);
+    if(!value) {
+      setStoreOwnerUser(userData.storeOwnerUser)
+    } 
+   
+  }
     return(
   <div className="container ">
   <div className="row col-12 mx-auto mt-5">
-    <div className="form-group has-search">
-      <span className="fa fa-search form-control-feedback" />
-      <input type="text" className="form-control font-weight-bold " placeholder="Live Retail Club" /> 
+    <div className="row">
+
+    <div className="form-group col-md-6 serachCat">
+    <div className="input-group rounded">
+  <input type="search" className="form-control rounded" placeholder={`${placeholderObj.name} - Filter ${obj.heading_one.name}..`} aria-label="Search"  value={searchCretorText} aria-describedby="search-addon" onChange={e => searchCretor(e.target.value)}/>
+</div>
+
+  </div>
+
+  <div className="form-group col-md-6 serachCatR">
+    <div className="input-group rounded">
+  <input type="search" className="form-control rounded" placeholder={`${placeholderObj.name} - Filter ${obj.heading_two.name}..`} aria-label="Search"  value={searchOwnerText} aria-describedby="search-addon" onChange={e => searchOwner(e.target.value)}/>
+</div>
+
+  </div>
     </div>
+ 
+  
   </div>
   <div className="row col-12 mx-auto mt-5">
     <div className="col-6 mx-auto text-center ">
@@ -37,7 +75,7 @@ function Role(){
         <br />   
         <br /> 
         {userData && userData.creators.length === 0 && <span>No Record Exist</span>}
-        {userData && userData.creators.length > 0 && userData.creators.map(item => <Link to={`/email?club=${clubKey}&category=${categoryName}&q=${item.email}`} style={{ textDecoration: 'none' }}>{item.fullName}</Link>)}    
+        {creators && creators.length > 0 && creators.map(item => <Link to={`/email?club=${clubKey}&category=${categoryName}&q=${item.email}`} style={{ textDecoration: 'none', marginBottom: '16px' }}>{item.fullName}</Link>)}    
        
       </div>
     </div>
@@ -47,7 +85,7 @@ function Role(){
         <br />
         <br /> 
         {userData && userData.storeOwnerUser.length === 0 && <span>No Record Exist</span>}
-        {userData && userData.storeOwnerUser.length > 0 && userData.storeOwnerUser.map(item => <Link to={`/email?club=${clubKey}&category=${categoryName}&q=${item.email}`} style={{ textDecoration: 'none' }}>{item.fullName}</Link>)}     
+        {storeOwnerUsers && storeOwnerUsers.length > 0 && storeOwnerUsers.map(item => <Link to={`/email?club=${clubKey}&category=${categoryName}&q=${item.email}`} style={{ textDecoration: 'none', marginBottom: '16px' }}><>{item.fullName}</></Link>)}     
         <br />
         
       </div>
