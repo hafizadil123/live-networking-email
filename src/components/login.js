@@ -124,7 +124,7 @@ function Register(){
 
 return(
   
-<div className="container mb-5 pb-5 border bg-secondary" style={{marginTop: '40px'}}>     
+<div className="container mb-5 pb-5 border text-light mt-2 rounded" style={{backgroundColor: 'black'}}>     
   <form onSubmit={handleSubmit(onSubmitt)}>
     <div className="row">
     <div className="form-group col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">

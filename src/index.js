@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
+import { Link } from 'react-router-dom';
 import App from './App';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -11,17 +12,17 @@ import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
   <React.StrictMode>
-     <nav className="navbar navbar-expand-lg" style={{backgroundColor: 'black'}}>
+     <nav className="navbar navbar-expand-lg" style={{backgroundColor:  'rgb(25,39,52)'}}>
     <div className="container-fluid">
       <div className="navbar-header">
         <a className="navbar-brand text-white" href="#">Live Email Networking</a>
       </div>
-      <a className="btn btn-success my-2 my-sm-0" href="/login" >Let's Ticker</a>
+      <Link className="btn btn-success my-2 my-sm-0" to="/login" >Let's Ticker</Link>
     </div>
   </nav>
     <App />
    <footer className="footer">
-  <div className="text-center p-3 text-white" style={{backgroundColor: 'black'}}>
+  <div className="text-center p-3 text-white" style={{backgroundColor: 'rgb(25,39,52)'}}>
     © 2021 Copyright: {' '}
     <a className="text-white" href="#">Aggnett.com</a>
   </div>
