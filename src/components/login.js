@@ -47,7 +47,7 @@ function Register(){
       fullName: name,
       googleId
     };
-    axios.post('http://localhost:5000/api/v1/users/register', requestObj).then(res => {
+    axios.post('http://18.220.178.164/api/v1/users/register', requestObj).then(res => {
       localStorage.setItem('accessToken', res.data.token);
       localStorage.setItem('user_detail', JSON.stringify(res.data.newUser));
       console.log('adil', res.data);
@@ -70,7 +70,7 @@ function Register(){
       email: response.email,
 
     };
-    axios.post('http://localhost:5000/api/v1/users/register', requestObj).then(res => {
+    axios.post('http://18.220.178.164/api/v1/users/register', requestObj).then(res => {
       localStorage.setItem('accessToken', res.data.token);
       localStorage.setItem('user_detail', JSON.stringify(res.data.newUser));
       if (res.data.success === 1) {
@@ -87,7 +87,7 @@ function Register(){
 
   async function handleToken(token, addresses) {
     const response = await axios.post(
-      "http://localhost:5000/api/v1/users/checkout",
+      "http://18.220.178.164/api/v1/users/checkout",
       { token, product }
     );
     const { status } = response.data;
@@ -103,7 +103,7 @@ function Register(){
    console.log(formData);
    console.log(country);
    console.log("data",data);
-    axios.post('http://localhost:5000/api/v1/users/register', data).then(res => {
+    axios.post('http://18.220.178.164/api/v1/users/register', data).then(res => {
       localStorage.setItem('accessToken', res.data.token);
       localStorage.setItem('user_detail', JSON.stringify(res.data.newUser));
       if (res.data.success === 1) {

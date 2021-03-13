@@ -39,7 +39,7 @@ const onSubmit = (data) =>{
       toEmail,
       text
     }
-    axios.post('http://localhost:5000/api/v1/users/send-email', obj).then(res => {
+    axios.post('http://18.220.178.164/api/v1/users/send-email', obj).then(res => {
       if (res.data.success === 1) {
         toast("Success! Your Email has been sent, you will recieve an email shortly", { type: "success" });
       } else {

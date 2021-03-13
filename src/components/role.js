@@ -18,7 +18,7 @@ function Role(){
   const q1 = ClubCategories[clubKey].heading_one.value;
   const q2 = ClubCategories[clubKey].heading_two.value;
   useEffect(() => {
-    axios.get(`http://localhost:5000/api/v1/users/allusers?q1=${q1}&q2=${q2}`).then(res => {
+    axios.get(`http://18.220.178.164/api/v1/users/allusers?q1=${q1}&q2=${q2}`).then(res => {
 
       if(res){
         setUserDate(res.data);
